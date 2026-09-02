@@ -36,15 +36,18 @@ model_list:
       model: bedrock/global.anthropic.claude-opus-4-8
 
   # --- Added: Claude Opus 5 (GLOBAL inference profile, ACTIVE in ap-northeast-2) ---
-  # thinking 기본 ON (Opus 4.8 과 달라진 breaking change)
+  # Thinking is on by default on Opus 5 (a behavior change from Opus 4.8).
   - model_name: bedrock-claude-opus-5
     litellm_params:
       model: bedrock/global.anthropic.claude-opus-5
       drop_params: true
 
-  # --- Added: Claude Opus 5 (thinking 비활성) — OpenAI 호환 클라이언트 전용 ---
-  # thinking 활성 시 delta 에 thinking_blocks(list)/provider_specific_fields(dict) 가 실려
-  # Raycast 등 엄격한 디코더가 "Failed to decode the response" 로 실패한다.
+  # --- Added: Claude Opus 5 with thinking disabled, for OpenAI-compatible clients ---
+  # With thinking active, LiteLLM puts thinking_blocks (list) and
+  # provider_specific_fields (dict) inside the streaming delta. Strict
+  # OpenAI-compatible clients such as Raycast fail to decode those and report
+  # "Failed to decode the response". Disabling thinking leaves the delta with
+  # only content and role, matching the shape those clients expect.
   - model_name: bedrock-claude-opus-5-chat
     litellm_params:
       model: bedrock/global.anthropic.claude-opus-5
