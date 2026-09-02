@@ -71,7 +71,6 @@ module "ecs_cluster" {
   github_api_key = var.github_api_key
   deepseek_api_key = var.deepseek_api_key
   ai21_api_key = var.ai21_api_key
-  vllm_api_key = var.vllm_api_key
   langsmith_api_key = var.langsmith_api_key
   langsmith_project = var.langsmith_project
   langsmith_default_run_name = var.langsmith_default_run_name

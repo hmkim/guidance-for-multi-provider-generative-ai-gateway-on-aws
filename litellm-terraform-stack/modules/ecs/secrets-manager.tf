@@ -29,6 +29,5 @@ resource "aws_secretsmanager_secret_version" "litellm_other_secrets_ver" {
     AI21_API_KEY           = var.ai21_api_key
     LANGSMITH_API_KEY      = var.langsmith_api_key
     LANGFUSE_SECRET_KEY = var.langfuse_secret_key
-    VLLM_API_KEY           = var.vllm_api_key
   })
 }

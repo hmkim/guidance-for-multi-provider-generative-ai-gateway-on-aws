@@ -208,13 +208,6 @@ variable "cloudfront_certificate_arn" {
   default     = ""
 }
 
-variable "vllm_api_key" {
-  description = "API key used for self-hosted vLLM endpoints declared in config.yaml"
-  type        = string
-  default     = "placeholder"
-  sensitive   = true
-}
-
 variable "wafv2_acl_arn" {
   description = "ARN of the WAFv2 ACL"
   type        = string

@@ -158,10 +158,6 @@ resource "aws_ecs_task_definition" "litellm" {
       {
         "name": "LANGFUSE_SECRET_KEY",
         "valueFrom": "${aws_secretsmanager_secret_version.litellm_other_secrets_ver.arn}:LANGFUSE_SECRET_KEY::"
-      },
-      {
-        "name": "VLLM_API_KEY",
-        "valueFrom": "${aws_secretsmanager_secret_version.litellm_other_secrets_ver.arn}:VLLM_API_KEY::"
       }
     ],
     "portMappings": [
