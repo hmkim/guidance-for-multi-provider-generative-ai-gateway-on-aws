@@ -71,12 +71,14 @@ module "ecs_cluster" {
   github_api_key = var.github_api_key
   deepseek_api_key = var.deepseek_api_key
   ai21_api_key = var.ai21_api_key
+  vllm_api_key = var.vllm_api_key
   langsmith_api_key = var.langsmith_api_key
   langsmith_project = var.langsmith_project
   langsmith_default_run_name = var.langsmith_default_run_name
   okta_audience = var.okta_audience
   okta_issuer = var.okta_issuer
   certificate_arn = var.certificate_arn
+  cloudfront_certificate_arn = var.cloudfront_certificate_arn
   wafv2_acl_arn = module.base.WafAclArn
   record_name = var.record_name
   hosted_zone_name = var.hosted_zone_name

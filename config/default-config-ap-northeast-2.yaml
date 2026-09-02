@@ -29,3 +29,39 @@ model_list:
     litellm_params:
       model: bedrock/apac.anthropic.claude-3-5-sonnet-20241022-v2:0
 
+
+  # --- Added: Claude Opus 4.8 (GLOBAL inference profile, resolves in ap-northeast-2) ---
+  - model_name: bedrock-claude-opus-4-8
+    litellm_params:
+      model: bedrock/global.anthropic.claude-opus-4-8
+
+  # --- Added: Claude Opus 5 (GLOBAL inference profile, ACTIVE in ap-northeast-2) ---
+  # thinking 기본 ON (Opus 4.8 과 달라진 breaking change)
+  - model_name: bedrock-claude-opus-5
+    litellm_params:
+      model: bedrock/global.anthropic.claude-opus-5
+      drop_params: true
+
+  # --- Added: Claude Opus 5 (thinking 비활성) — OpenAI 호환 클라이언트 전용 ---
+  # thinking 활성 시 delta 에 thinking_blocks(list)/provider_specific_fields(dict) 가 실려
+  # Raycast 등 엄격한 디코더가 "Failed to decode the response" 로 실패한다.
+  - model_name: bedrock-claude-opus-5-chat
+    litellm_params:
+      model: bedrock/global.anthropic.claude-opus-5
+      drop_params: true
+      thinking: { type: disabled }
+
+  # --- Added: OpenAI GPT-OSS on Bedrock (only available in us-west-2 -> cross-region call) ---
+  - model_name: bedrock-gpt-oss-120b
+    litellm_params:
+      model: bedrock/openai.gpt-oss-120b-1:0
+      aws_region_name: us-west-2
+
+  - model_name: bedrock-gpt-oss-20b
+    litellm_params:
+      model: bedrock/openai.gpt-oss-20b-1:0
+      aws_region_name: us-west-2
+
+  - model_name: bedrock-claude-sonnet-4-5
+    litellm_params:
+      model: bedrock/global.anthropic.claude-sonnet-4-5-20250929-v1:0
